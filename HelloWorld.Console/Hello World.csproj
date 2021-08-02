@@ -6,10 +6,4 @@
     <RootNamespace>Hello_World</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="HelloWorldWeb\**" />
-    <EmbeddedResource Remove="HelloWorldWeb\**" />
-    <None Remove="HelloWorldWeb\**" />
-  </ItemGroup>
-
 </Project>
