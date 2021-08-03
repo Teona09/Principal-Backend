@@ -1,4 +1,8 @@
-﻿using HelloWorldWeb.Models;
+﻿// <copyright file="HomeController.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using HelloWorldWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;

@@ -8,17 +8,16 @@
 
 <div class="text-center">
     <h1 class="display-4">Team 3</h1>
-    <ul id="teamList">
+    <ul id="list">
         @for (var i = 0; i < Model.TeamMembers.Count; i++)
         {
             var member = Model.TeamMembers[i];
-
+    
     <li class="member">
         @member
     </li>}
+    </ul>
     <input type="text" id="nameField" title="e.g Claudia" />
     <button id="createButton" title="Create">Create</button>
-
-
 
 </div>
