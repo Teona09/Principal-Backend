@@ -23,6 +23,18 @@ namespace HelloWorldWeb.Controllers
                 TeamMembers = new List<string>(new string[]{ "Radu", "Teona", "Claudia", "Leon", "George", "Dragos"})
             };          
         }
+        [HttpGet]
+        public int GetCount()
+        {
+            return teamInfo.TeamMembers.Count;
+        }
+
+
+        [HttpGet]
+        public void AddTeamMember(string name)
+        {
+            teamInfo.TeamMembers.Add(name);   
+        }
 
         public IActionResult Index()
         {
