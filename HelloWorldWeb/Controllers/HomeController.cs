@@ -22,7 +22,7 @@ namespace HelloWorldWeb.Controllers
         public HomeController(ILogger<HomeController> logger, ITeamService teamService)
         {
             this.logger = logger;
-            this.teamService = new TeamService();
+            this.teamService = teamService;
         }
 
         [HttpGet]
@@ -39,7 +39,7 @@ namespace HelloWorldWeb.Controllers
 
         public IActionResult Index()
         {
-            return this.View(this.teamService.GetTeamInfo());
+             return this.View(this.teamService.GetTeamInfo());
         }
 
         public IActionResult Privacy()

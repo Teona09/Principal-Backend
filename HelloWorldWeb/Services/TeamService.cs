@@ -14,6 +14,7 @@ namespace HelloWorldWeb.Services
         {
             this.teamInfo = new TeamInfo
             {
+                Name = "Team 3",
                 TeamMembers = new List<string>(new string[]
                 {
                     "Radu",
