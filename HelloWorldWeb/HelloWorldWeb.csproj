@@ -5,6 +5,13 @@
     <StartupObject>HelloWorldWeb.Program</StartupObject>
     <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
   </PropertyGroup>
+	
+  <ItemGroup>
+    <Compile Remove="NewFolder1\**" />
+    <Content Remove="NewFolder1\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
+    <None Remove="NewFolder1\**" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
