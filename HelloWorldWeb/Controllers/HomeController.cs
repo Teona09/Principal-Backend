@@ -1,5 +1,5 @@
-﻿// <copyright file="HomeController.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="HomeController.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
 // </copyright>
 
 using HelloWorldWeb.Models;
@@ -27,6 +27,7 @@ namespace HelloWorldWeb.Controllers
                 TeamMembers = new List<string>(new string[]{ "Radu", "Teona", "Claudia", "Leon", "George", "Dragos"})
             };          
         }
+
         [HttpGet]
         public int GetCount()
         {
@@ -34,7 +35,7 @@ namespace HelloWorldWeb.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public void AddTeamMember(string name)
         {
             teamInfo.TeamMembers.Add(name);   

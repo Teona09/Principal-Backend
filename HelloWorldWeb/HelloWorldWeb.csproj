@@ -5,6 +5,14 @@
     <StartupObject>HelloWorldWeb.Program</StartupObject>
   </PropertyGroup>
 	
+  <ItemGroup>
+    <Content Remove="stylecop.json" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+	
 	<ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
