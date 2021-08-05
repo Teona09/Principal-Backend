@@ -14,10 +14,11 @@ namespace HelloWorldWeb.Tests
             ITeamService teamService = new TeamService();
 
             //Act
+            int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
             teamService.AddTeamMember("Delia");
 
             //Assert
-            Assert.Equal(7, teamService.GetTeamInfo().TeamMembers.Count);
+            Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
         }
 
         [Fact]
@@ -27,10 +28,11 @@ namespace HelloWorldWeb.Tests
             TeamService teamService = new TeamService();
 
             // Act
+            int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
             teamService.RemoveMember(2);
 
             // Assert
-            Assert.Equal(5, teamService.GetTeamInfo().TeamMembers.Count);
+            Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
         }
     }
 }
