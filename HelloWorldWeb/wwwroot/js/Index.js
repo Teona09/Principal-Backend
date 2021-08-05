@@ -16,7 +16,7 @@
                 <span class="memberName">
                         ${newcomerName}
                     </span >
-                <span class="delete fa fa-remove" onclick="deleteMember(${length})">
+                <span class="delete fa fa-remove" onclick="deleteMember(${result})">
                     </span>
                 <span class="edit fa fa-pencil">
                     </span>

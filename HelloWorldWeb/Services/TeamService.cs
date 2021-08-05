@@ -15,16 +15,16 @@ namespace HelloWorldWeb.Services
             this.teamInfo = new TeamInfo
             {
                 Name = "Team 3",
-                TeamMembers = new List<string>(new string[]
-                {
-                    "Radu",
-                    "Teona",
-                    "Claudia",
-                    "Leon",
-                    "George",
-                    "Dragos",
-                }),
+                TeamMembers = new List<TeamMember>(),
+
             };
+            teamInfo.TeamMembers.Add(new TeamMember(1, "Radu"));
+            teamInfo.TeamMembers.Add(new TeamMember(2, "Teona"));
+            teamInfo.TeamMembers.Add(new TeamMember(3, "Claudia"));
+            teamInfo.TeamMembers.Add(new TeamMember(4, "Leon"));
+            teamInfo.TeamMembers.Add(new TeamMember(5, "George"));
+            teamInfo.TeamMembers.Add(new TeamMember(6, "Dragos"));
+            
         }
 
         public TeamInfo GetTeamInfo()
@@ -32,9 +32,11 @@ namespace HelloWorldWeb.Services
             return this.teamInfo;
         }
 
-        public void AddTeamMember(string name)
+        public int AddTeamMember(string name)
         {
-            this.teamInfo.TeamMembers.Add(name);
+            int newId = teamInfo.TeamMembers.Count()+1;
+            this.teamInfo.TeamMembers.Add(new TeamMember(newId,name));
+            return newId;
         }
 
         public void RemoveMember(int memberIndex)
