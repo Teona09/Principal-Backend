@@ -32,7 +32,8 @@
     });
 
 $("#clearButton").click(function ClearFields() {
-        document.getElementById("nameField").value = "";
+    document.getElementById("nameField").value = "";
+    document.getElementById("createButton").disabled = true;
     });
 
 });
