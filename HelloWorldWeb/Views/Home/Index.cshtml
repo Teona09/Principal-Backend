@@ -4,7 +4,11 @@
 
 @section scripts{
     <script type="text/javascript" src="~/js/Index.js"></script>
-} 
+}
+
+@section AdditionalStyles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
 
 <div class="text-center">
     <h1 class="display-4">Team 3</h1>
@@ -12,10 +16,17 @@
         @for (var i = 0; i < Model.TeamMembers.Count; i++)
         {
             var member = Model.TeamMembers[i];
-    
-    <li class="member">
-        @member
-    </li>}
+       
+            <li class="member">
+            <span class="memberName">
+                @member
+            </span >
+            <span class="delete fa fa-remove">
+            </span>
+            <span class="edit fa fa-pencil">
+            </span>
+        </li>
+}
     </ul>
     <input type="text" id="nameField" title="e.g Claudia" />
     <button class="btn btn-primary" id="createButton" title="Create">Create</button>
