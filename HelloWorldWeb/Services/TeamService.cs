@@ -36,5 +36,10 @@ namespace HelloWorldWeb.Services
         {
             this.teamInfo.TeamMembers.Add(name);
         }
+
+        public void RemoveMember(int memberIndex)
+        {
+            this.teamInfo.TeamMembers.RemoveAt(memberIndex);
+        }
     }
 }
