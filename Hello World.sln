@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldWeb.Tests", "HelloWorldWeb.Tests\HelloWorldWeb.Tests.csproj", "{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{5E041A65-BFE3-4C8A-8C1C-7F3A22F973DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E041A65-BFE3-4C8A-8C1C-7F3A22F973DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E041A65-BFE3-4C8A-8C1C-7F3A22F973DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
