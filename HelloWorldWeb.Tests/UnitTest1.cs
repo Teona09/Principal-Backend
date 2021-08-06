@@ -29,10 +29,10 @@ namespace HelloWorldWeb.Tests
 
             // Act
             int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
-            teamService.RemoveMember(2);
+            teamService.RemoveMember(0);
 
             // Assert
-            Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
+            Assert.Equal(initialCount - 1, teamService.GetTeamInfo().TeamMembers.Count);
         }
     }
 }
