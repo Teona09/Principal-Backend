@@ -55,5 +55,11 @@ namespace HelloWorldWeb.Services
             var member = GetTeamMemberById(id);
             this.teamInfo.TeamMembers.Remove(member);
         }
+
+        public void UpdateMemberName(int memberId, string name)
+        {
+            int index = teamInfo.TeamMembers.FindIndex(element => element.Id == memberId);
+            teamInfo.TeamMembers[index].Name = name;
+        }
     }
 }

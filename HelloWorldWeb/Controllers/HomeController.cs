@@ -43,6 +43,12 @@ namespace HelloWorldWeb.Controllers
             teamService.RemoveMember(memberIndex);
         }
 
+        [HttpPost]
+        public void UpdateMemberName(int memberId, String name)
+        {
+            teamService.UpdateMemberName(memberId, name);
+        }
+
         public IActionResult Index()
         {
              return this.View(this.teamService.GetTeamInfo());

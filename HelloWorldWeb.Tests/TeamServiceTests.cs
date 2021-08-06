@@ -1,3 +1,4 @@
+using HelloWorldWeb.Models;
 using HelloWorldWeb.Services;
 using System;
 using System.Linq;
@@ -25,14 +26,27 @@ namespace HelloWorldWeb.Tests
         public void RemoveMemberFromTheTeam()
         {
             // Assume
+            ITeamService teamServiceForRemove = new TeamService();
+
+            // Act
+            int initialCountForRemove = teamServiceForRemove.GetTeamInfo().TeamMembers.Count;
+            TeamMember firstMember = teamServiceForRemove.GetTeamInfo().TeamMembers[0];
+            teamServiceForRemove.RemoveMember(firstMember.Id);
+
+            // Assert
+            Assert.Equal(initialCountForRemove - 1, teamServiceForRemove.GetTeamInfo().TeamMembers.Count);
+        }
+
+        [Fact]
+        public void UpdateTeamMember()
+        {
             TeamService teamService = new TeamService();
 
             // Act
-            int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
-            teamService.RemoveMember(0);
+            teamService.UpdateMemberName(0,"Alex");
 
             // Assert
-            Assert.Equal(initialCount - 1, teamService.GetTeamInfo().TeamMembers.Count);
+            Assert.Equal("Alex", teamService.GetTeamMemberById(0).Name);
         }
     }
 }
