@@ -10,6 +10,6 @@ namespace HelloWorldWeb.Services
 
         TeamMember GetTeamMemberById(int id);
 
-        public void RemoveMember(int memberIndex);
+        public void RemoveMember(int id);
     }
 }

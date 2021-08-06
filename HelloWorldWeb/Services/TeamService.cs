@@ -17,12 +17,12 @@ namespace HelloWorldWeb.Services
                 Name = "Team 3",
                 TeamMembers = new List<TeamMember>(),
             };
-            teamInfo.TeamMembers.Add(new TeamMember("Radu"));
-            teamInfo.TeamMembers.Add(new TeamMember("Teona"));
-            teamInfo.TeamMembers.Add(new TeamMember("Claudia"));
-            teamInfo.TeamMembers.Add(new TeamMember("Leon"));
-            teamInfo.TeamMembers.Add(new TeamMember("George"));
-            teamInfo.TeamMembers.Add(new TeamMember("Dragos"));
+            AddTeamMember("Radu");
+            AddTeamMember("Teona");
+            AddTeamMember("Claudia");
+            AddTeamMember("Leon");
+            AddTeamMember("George");
+            AddTeamMember("Dragos");
         }
 
         public TeamInfo GetTeamInfo()
@@ -50,9 +50,10 @@ namespace HelloWorldWeb.Services
             return member.Id;
         }
 
-        public void RemoveMember(int memberIndex)
+        public void RemoveMember(int id)
         {
-            this.teamInfo.TeamMembers.Remove(GetTeamMemberById(memberIndex));
+            var member = GetTeamMemberById(id);
+            this.teamInfo.TeamMembers.Remove(member);
         }
     }
 }
