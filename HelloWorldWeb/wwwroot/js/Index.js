@@ -36,25 +36,6 @@
         document.getElementById("createButton").disabled = true;
     });
 
-   /* $('#submit').click(function () {
-        const id = $('#editClassmate').attr('member-id');
-        console.log(id);
-        const newName = $('#classmateName').val();
-        $.ajax({
-            url: "/Home/UpdateMemberName",
-            method: "POST",
-            data: {
-                memberId: id,
-                name: newName
-            },
-            success: function (result) {
-                location.reload();
-            }
-        })
-    });
-
-    */
-
     $("#editClassmate").on("click", "#submit", function () {
         console.log('submit changes to server');
         const id = $('#editClassmate').attr('member-id');
