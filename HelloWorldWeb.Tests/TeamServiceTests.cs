@@ -67,5 +67,7 @@ namespace HelloWorldWeb.Tests
             var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newMemberName);
             Assert.Null(member);
         }
+
+
     }
 }
