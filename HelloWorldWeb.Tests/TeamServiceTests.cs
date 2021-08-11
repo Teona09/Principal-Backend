@@ -49,7 +49,7 @@ namespace HelloWorldWeb.Tests
             teamService.UpdateMemberName(currentId,"Alex");
 
             // Assert
-            Assert.Equal("Alex", teamService.GetTeamMemberById(currentId-1).Name);
+            Assert.Equal("Alex", teamService.GetTeamMemberById(currentId).Name);
         }
     }
 }
