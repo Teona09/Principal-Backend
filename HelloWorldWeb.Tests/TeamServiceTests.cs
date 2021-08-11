@@ -40,13 +40,16 @@ namespace HelloWorldWeb.Tests
         [Fact]
         public void UpdateTeamMember()
         {
+            //Assume
             TeamService teamService = new TeamService();
 
             // Act
-            teamService.UpdateMemberName(0,"Alex");
+            TeamMember firstMember = teamService.GetTeamInfo().TeamMembers[0];
+            int currentId = firstMember.Id;
+            teamService.UpdateMemberName(currentId,"Alex");
 
             // Assert
-            Assert.Equal("Alex", teamService.GetTeamMemberById(0).Name);
+            Assert.Equal("Alex", teamService.GetTeamMemberById(currentId-1).Name);
         }
     }
 }
