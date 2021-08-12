@@ -46,11 +46,11 @@ namespace HelloWorldWebApp.Controllers
                 long unixDateTime = item.Value<long>("dt");
                 dailyWeatherRecord.Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date;
 
-                float Temp = item.SelectToken("temp").Value<float>("day");
-                dailyWeatherRecord.Temperature = Temp;
+                float temp = item.SelectToken("temp").Value<float>("day");
+                dailyWeatherRecord.Temperature = ConvertKelvinToCelsius(temp);
 
                 string weather = item.SelectToken("weather")[0].Value<string>("description");
-                dailyWeatherRecord.Type = Convert(weather);
+                dailyWeatherRecord.Type = ConvertWeatherType(weather);
 
                 result.Add(dailyWeatherRecord);
             }
@@ -58,18 +58,39 @@ namespace HelloWorldWebApp.Controllers
             return result;
         }
 
-        private WeatherType Convert(string weather)
+        public static float ConvertKelvinToCelsius(float temp)
+        {
+            float celsiusToKelvinDifference = 273.15f;
+            float celsiusTemperature = temp - celsiusToKelvinDifference;
+            return (float)Math.Round(celsiusTemperature, 2);
+        }
+
+        private WeatherType ConvertWeatherType(string weather)
         {
             switch (weather)
             {
-                case "few clouds":
-                    return WeatherType.FewClouds;
-                case "broken clouds":
-                    return WeatherType.BrokenClouds;
+                case "thunderstorm":
+                    return WeatherType.Thunderstorm;
                 case "light rain":
                     return WeatherType.LightRain;
                 case "moderate rain":
                     return WeatherType.ModerateRain;
+                case "heavy intensity rain":
+                    return WeatherType.HeavyRain;
+                case "very heavy rain":
+                    return WeatherType.HeavyRain;
+                case "snow":
+                    return WeatherType.Snow;
+                case "mist":
+                    return WeatherType.Mist;
+                case "fog":
+                    return WeatherType.Fog;
+                case "clear sky":
+                    return WeatherType.ClearSky;
+                case "few clouds":
+                    return WeatherType.FewClouds;
+                case "broken clouds":
+                    return WeatherType.BrokenClouds;
                 default:
                     throw new Exception($"Unknown weather type {weather}.");
             }
