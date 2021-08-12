@@ -13,7 +13,7 @@ namespace HelloWorldWeb.Models
             this.Name = name;
             this.Id = idCount;
             idCount++;
-            this.timeService = (ITimeService)timeService;
+            this.timeService = timeService;
         }
 
         public int Id { get; set; }
@@ -26,7 +26,6 @@ namespace HelloWorldWeb.Models
         {
             TimeSpan age;
             DateTime birthdate = this.Birthdate;
-
             DateTime zeroTime = new DateTime(1, 1, 1);
             age = timeService.Now() - birthdate;
             int years = (zeroTime + age).Year - 1;

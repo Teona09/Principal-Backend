@@ -1,5 +1,6 @@
 ﻿using HelloWorldWeb.Models;
 using HelloWorldWeb.Services;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,21 @@ namespace HelloWorldWeb.Tests
 {
     public class TeamMemberTests
     {
-        private ITimeService timeService;
+        private Mock<ITimeService> timeMock;
 
-        public TeamMemberTests()
+        private void InitializeTimeSeriviceMock()
         {
-            timeService = new FakeTimeService();
+            timeMock = new Mock<ITimeService>();
+            timeMock.Setup(_ => _.Now()).Returns(new DateTime(2021, 8, 12));
+            
         }
 
         [Fact]
         public void NoEqulsMembers()
         {
             // Assume
+            InitializeTimeSeriviceMock();
+            var timeService = timeMock.Object;
 
             // Act
             TeamMember member1 = new TeamMember("Tudor", timeService);
@@ -34,31 +39,34 @@ namespace HelloWorldWeb.Tests
         [Fact]
         public void TestIdIncremetation()
         {
+            //Assume
+            InitializeTimeSeriviceMock();
+            var timeService = timeMock.Object;
+
+            //Act
             TeamMember teamMember = new TeamMember("Elena", timeService);
             int nextId = TeamMember.GetIdCount();
+
+            //Assert
             Assert.Equal(teamMember.Id + 1, nextId);
         }
             [Fact]
         public void GettingAge()
         {
             // Assume
+            InitializeTimeSeriviceMock();
+            var timeService = timeMock.Object;
             TeamMember newMember = new TeamMember("Andreea",timeService);
             newMember.Birthdate =  new DateTime(2000, 1, 1);
-            int expectedAge = DateTime.Now.Year - 2000;
 
             // Act
             int calculatedAge = newMember.GetAge();
 
             // Assert
-            Assert.Equal(expectedAge, calculatedAge);
+            timeMock.Verify(library => library.Now(), Times.AtMostOnce());
+            Assert.Equal(21, calculatedAge);
+            
         }
 
-        internal class FakeTimeService : ITimeService
-        {
-            public DateTime Now()
-            {
-                return new DateTime(2021, 08, 11);
-            }
-        }
     }
 }
