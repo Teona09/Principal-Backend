@@ -22,6 +22,7 @@ namespace HelloWorldWebApp.Controllers
         [HttpGet]
         public IEnumerable<DailyWeatherRecord> Get()
         {
+            // https://api.openweathermap.org/data/2.5/onecall?lat=46.7700&lon=23.5800&exclude=hourly,minutely&appid=c969b66bb3c8e3fe32d4485a1623f42c
             var client = new RestClient($"https://api.openweathermap.org/data/2.5/onecall?lat={latitude}&lon={longitude}&exclude=hourly,minutely&appid={apiKey}");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
@@ -34,17 +35,44 @@ namespace HelloWorldWebApp.Controllers
             var json = JObject.Parse(content);
 
             List<DailyWeatherRecord> result = new List<DailyWeatherRecord>();
-            var jsonArray = json["daily"];
+
+            var jsonArray = json["daily"].Take(7);
+
             foreach (var item in jsonArray)
             {
                 // TODO: convert item to dailyWeatherRecord
 
-
                 DailyWeatherRecord dailyWeatherRecord = new DailyWeatherRecord(new DateTime(2021, 8, 12), 22.0f, WeatherType.Mild);
+                long unixDateTime = item.Value<long>("dt");
+                dailyWeatherRecord.Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date;
+
+                float Temp = item.SelectToken("temp").Value<float>("day");
+                dailyWeatherRecord.Temperature = Temp;
+
+                string weather = item.SelectToken("weather")[0].Value<string>("description");
+                dailyWeatherRecord.Type = Convert(weather);
+
                 result.Add(dailyWeatherRecord);
             }
 
             return result;
+        }
+
+        private WeatherType Convert(string weather)
+        {
+            switch (weather)
+            {
+                case "few clouds":
+                    return WeatherType.FewClouds;
+                case "broken clouds":
+                    return WeatherType.BrokenClouds;
+                case "light rain":
+                    return WeatherType.LightRain;
+                case "moderate rain":
+                    return WeatherType.ModerateRain;
+                default:
+                    throw new Exception($"Unknown weather type {weather}.");
+            }
         }
 
         // GET api/<WeatherController>/5
