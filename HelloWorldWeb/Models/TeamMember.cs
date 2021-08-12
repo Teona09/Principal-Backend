@@ -1,16 +1,19 @@
-﻿using System;
+﻿using HelloWorldWeb.Services;
+using System;
 
 namespace HelloWorldWeb.Models
 {
     public class TeamMember
     {
         private static int idCount = 0;
+        private readonly ITimeService timeService;
 
-        public TeamMember(string name)
+        public TeamMember(string name, ITimeService timeService)
         {
             this.Name = name;
             this.Id = idCount;
             idCount++;
+            this.timeService = (ITimeService)timeService;
         }
 
         public int Id { get; set; }
@@ -21,11 +24,19 @@ namespace HelloWorldWeb.Models
 
         public int GetAge()
         {
-            var age = DateTime.Now.Subtract(Birthdate).Days;
-            age = age / 365;
+            TimeSpan age;
+            DateTime birthdate = this.Birthdate;
 
-            return age;
+            DateTime zeroTime = new DateTime(1, 1, 1);
+            age = timeService.Now() - birthdate;
+            int years = (zeroTime + age).Year - 1;
+
+            return years;
         }
 
+        public static int GetIdCount()
+        {
+            return idCount;
+        }
     }
 }

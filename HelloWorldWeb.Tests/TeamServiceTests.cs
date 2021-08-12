@@ -8,6 +8,7 @@ namespace HelloWorldWeb.Tests
 {
     public class TeamServiceTest
     {
+        private ITimeService timeService;
         [Fact]
         public void AddTeamMemberToTheTeam()
         {
