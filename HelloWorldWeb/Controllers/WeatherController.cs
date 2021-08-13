@@ -33,18 +33,11 @@ namespace HelloWorldWebApp.Controllers
         public IEnumerable<DailyWeatherRecord> ConvertResponseToWeatherForecastList(string content)
         {
             var json = JObject.Parse(content);
-
-            List<DailyWeatherRecord> result = new List<DailyWeatherRecord>();
-
             var jsonArray = json["daily"].Take(7);
 
-            foreach (var item in jsonArray)
-            {
-                DailyWeatherRecord dailyWeatherRecord = CreateDailyWeatherFromJToken(item);
-                result.Add(dailyWeatherRecord);
-            }
-
-            return result;
+            // lambda expression
+            // result.AddRange(jsonArray.Select(item => CreateDailyWeatherFromJToken(item)));
+            return jsonArray.Select(CreateDailyWeatherFromJToken);
         }
 
         private DailyWeatherRecord CreateDailyWeatherFromJToken(JToken item)
