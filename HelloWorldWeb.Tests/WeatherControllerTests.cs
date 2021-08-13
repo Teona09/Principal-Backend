@@ -29,20 +29,6 @@ namespace HelloWorldWeb.Tests
             Assert.Equal(24.26f, firstDay.Temperature);
             Assert.Equal(WeatherType.FewClouds, firstDay.Type);
         }
-        [Fact]
-        public void TestConvertKelvinToCelsius()
-        {
-            // Assume
-            float kelvinTemp = 300.0f;
-            float expectedCelsiusTemp = 26.85f;
-            
-            // Act
-            float computedCelsiusTemp = WeatherController.ConvertKelvinToCelsius(kelvinTemp);
-
-            // Assert
-            Assert.Equal(expectedCelsiusTemp,computedCelsiusTemp);
-
-        }
 
     }
 }

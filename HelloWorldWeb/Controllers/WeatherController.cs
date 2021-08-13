@@ -40,29 +40,23 @@ namespace HelloWorldWebApp.Controllers
 
             foreach (var item in jsonArray)
             {
-                // TODO: convert item to dailyWeatherRecord
-
-                DailyWeatherRecord dailyWeatherRecord = new DailyWeatherRecord(new DateTime(2021, 8, 12), 22.0f, WeatherType.Mild);
-                long unixDateTime = item.Value<long>("dt");
-                dailyWeatherRecord.Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date;
-
-                float temp = item.SelectToken("temp").Value<float>("day");
-                dailyWeatherRecord.Temperature = ConvertKelvinToCelsius(temp);
-
-                string weather = item.SelectToken("weather")[0].Value<string>("description");
-                dailyWeatherRecord.Type = ConvertWeatherType(weather);
-
+                DailyWeatherRecord dailyWeatherRecord = CreateDailyWeatherFromJToken(item);
                 result.Add(dailyWeatherRecord);
             }
 
             return result;
         }
 
-        public static float ConvertKelvinToCelsius(float temp)
+        private DailyWeatherRecord CreateDailyWeatherFromJToken(JToken item)
         {
-            float celsiusToKelvinDifference = 273.15f;
-            float celsiusTemperature = temp - celsiusToKelvinDifference;
-            return (float)Math.Round(celsiusTemperature, 2);
+            long unixDateTime = item.Value<long>("dt");
+            var day = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date;
+            float temp = item.SelectToken("temp").Value<float>("day");
+            string weather = item.SelectToken("weather")[0].Value<string>("description");
+            var type = ConvertWeatherType(weather);
+
+            DailyWeatherRecord dailyWeatherRecord = new DailyWeatherRecord(day, temp, type);
+            return dailyWeatherRecord;
         }
 
         private WeatherType ConvertWeatherType(string weather)

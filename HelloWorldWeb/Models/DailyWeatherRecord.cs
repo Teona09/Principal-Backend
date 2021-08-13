@@ -10,7 +10,7 @@ namespace HelloWorldWeb.Models
         public DailyWeatherRecord(DateTime day, float temperature, WeatherType type)
         {
             Date = day;
-            Temperature = temperature;
+            Temperature = ConvertKelvinToCelsius(temperature);
             Type = type;
         }
 
@@ -19,5 +19,12 @@ namespace HelloWorldWeb.Models
         public WeatherType Type { get; set; }
 
         public DateTime Date { get; set; }
+
+        public static float ConvertKelvinToCelsius(float temp)
+        {
+            float celsiusToKelvinDifference = 273.15f;
+            float celsiusTemperature = temp - celsiusToKelvinDifference;
+            return (float)Math.Round(celsiusTemperature, 2);
+        }
     }
 }
