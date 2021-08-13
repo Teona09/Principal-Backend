@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace HelloWorldWebApp.Controllers
 {
+    /// <summary>
+    /// fetch data from weather API.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class WeatherController : ControllerBase

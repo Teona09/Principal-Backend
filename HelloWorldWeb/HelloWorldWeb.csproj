@@ -6,6 +6,10 @@
     <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
   </PropertyGroup>
 	
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Projects\ssHelloWorld\HelloWorldWeb\HelloWorldWeb.xml</DocumentationFile>
+  </PropertyGroup>
+	
   <ItemGroup>
     <Compile Remove="NewFolder1\**" />
     <Content Remove="NewFolder1\**" />
@@ -21,6 +25,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
 		<AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
 	</ItemGroup>
 	
