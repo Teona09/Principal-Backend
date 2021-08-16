@@ -1,8 +1,8 @@
-﻿using HelloWorldWebApp.Controllers;
-using Microsoft.Extensions.Configuration;
-
-namespace HelloWorldWeb.Controllers
+﻿namespace HelloWorldWeb.Controllers
 {
+    using HelloWorldWebApp.Controllers;
+    using Microsoft.Extensions.Configuration;
+
     public class WeatherControllerSettings : IWeatherControllerSettings
     {
         public WeatherControllerSettings(IConfiguration conf)

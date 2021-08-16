@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace HelloWorldWeb.Models
+﻿namespace HelloWorldWeb.Models
 {
+    using System.Collections.Generic;
+
     public class TeamInfo
     {
         public string Name { get; set; }

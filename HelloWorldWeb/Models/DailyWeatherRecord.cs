@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace HelloWorldWeb.Models
+﻿namespace HelloWorldWeb.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class DailyWeatherRecord
     {
         public const float KELVIN_CONST = 273.15f;
