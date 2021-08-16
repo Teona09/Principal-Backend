@@ -1,17 +1,28 @@
 # HelloWorldApp
 ## How to deploy to Heroku
-Login to heroku
+1.Login to heroku
 ```
 heroku login
 heroku container:login
 ```
+2. Build container
 
-Push container
+Build docker image:
 ```
-heroku container:push -a borys-internship-class web
+docker build -t teonahelloworldapp
 ```
 
-Release the container
+3. Create and run docker container
 ```
-heroku container:release -a borys-internship-class web
+docker run -d -p 8081:80 --name teonahelloworldapp_container teonahelloworldapp
+```
+
+4. Push container
+```
+heroku container:push -a app-helloworld-teona web
+```
+
+5. Release the container
+```
+heroku container:release -a app-helloworld-teona web
 ```
