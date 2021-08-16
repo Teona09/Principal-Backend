@@ -12,6 +12,9 @@ namespace HelloWorldWebApp.Controllers
 {
     /// <summary>
     /// fetch data from weather API.
+    /// <see href="https://openweathermap.org/api">
+    /// Weather API
+    /// </see>
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -123,12 +126,6 @@ namespace HelloWorldWebApp.Controllers
         // PUT api/<WeatherController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<WeatherController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
         {
         }
     }
