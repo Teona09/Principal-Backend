@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HelloWorldWeb</name>
+    </assembly>
+    <members>
+        <member name="T:HelloWorldWebApp.Controllers.WeatherController">
+            <summary>
+            fetch data from weather API.
+            <see href="https://openweathermap.org/api">
+            Weather API
+            </see>
+            </summary>
+        </member>
+        <member name="M:HelloWorldWebApp.Controllers.WeatherController.Get(System.Int32)">
+            <summary>
+            Get a weather forecast for the day in specified amount of days from now.
+            </summary>
+            <param name="index"> Amount of days from now (from 0 to 7).</param>
+            <returns> The weather forecast. </returns>
+        </member>
+    </members>
+</doc>
