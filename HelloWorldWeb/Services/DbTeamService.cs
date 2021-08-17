@@ -34,7 +34,15 @@ namespace HelloWorldWeb.Services
 
         public TeamMember GetTeamMemberById(int id)
         {
-            throw new NotImplementedException();
+            foreach (TeamMember member in _context.TeamMembers)
+            {
+                if (member.Id == id)
+                {
+                    return member;
+                }
+            }
+
+            return null;
         }
 
         public void RemoveMember(int id)
@@ -44,9 +52,18 @@ namespace HelloWorldWeb.Services
             _context.SaveChanges();
         }
 
-        public void UpdateMemberName(int memberid, string name)
+        public void UpdateMemberName(int memberId, string name)
         {
-            throw new NotImplementedException();
+            TeamMember teamMember = GetTeamMemberById(memberId);
+            if (teamMember == null)
+            {
+                // object not found
+                throw new NullReferenceException("no object with this id");
+            }
+
+            teamMember.Name = name;
+            _context.Update(teamMember);
+            _context.SaveChanges();
         }
     }
 }
