@@ -22,11 +22,19 @@ namespace HelloWorldWeb
             this.Configuration = configuration;
         }
 
+        public static string ConvertHerokuStringToAspnetString(string herokuConnectionString)
+        {
+            var databaseUri = new Uri(herokuConnectionString);
+            string[] databaseUriUserInfo = databaseUri.UserInfo.Split(":");
+            return $"Host={databaseUri.Host};Port={databaseUri.Port};Database={databaseUri.LocalPath.Substring(1)};User Id={databaseUriUserInfo[0]};Password={databaseUriUserInfo[1]};Pooling=true;SSL Mode=Require;TrustServerCertificate=True;";
+        }
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //string connectionString = Configuration.GetConnectionString("HerokuPostgres");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
