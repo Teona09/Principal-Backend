@@ -24,7 +24,7 @@ namespace HelloWorldWeb.Tests
             Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
         }
 
-        //[Fact (Skip = "fails right now later")] - how to skip a test
+        //[Fact (Skip = "fails right now later.")] - how to skip a test
         [Fact]
         public void RemoveMemberFromTheTeam()
         {
