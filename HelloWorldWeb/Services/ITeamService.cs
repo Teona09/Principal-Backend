@@ -4,7 +4,7 @@ namespace HelloWorldWeb.Services
 {
     public interface ITeamService
     {
-        int AddTeamMember(string name);
+        int AddTeamMember(TeamMember member);
 
         TeamInfo GetTeamInfo();
 

@@ -45,7 +45,7 @@ namespace HelloWorldWeb.Services
 
         public int AddTeamMember(string name)
         {
-            TeamMember member = new TeamMember() { Name = name }; ;
+            TeamMember member = new TeamMember() { Name = name };
             this.teamInfo.TeamMembers.Add(member);
             return member.Id;
         }
@@ -60,6 +60,14 @@ namespace HelloWorldWeb.Services
         {
             int index = teamInfo.TeamMembers.FindIndex(element => element.Id == memberId);
             teamInfo.TeamMembers[index].Name = name;
+        }
+
+        public int AddTeamMember(TeamMember member)
+        {
+            int id = teamInfo.TeamMembers.Max(_ => _.Id) + 1;
+            member.Id = id;
+            teamInfo.TeamMembers.Add(member);
+            return id;
         }
     }
 }

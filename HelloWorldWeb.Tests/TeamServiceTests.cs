@@ -16,12 +16,15 @@ namespace HelloWorldWeb.Tests
 
             //Act
             int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
-            teamService.AddTeamMember("Delia");
+            TeamMember member = new TeamMember();
+            member.Name = "Delia";
+            teamService.AddTeamMember(member);
 
             //Assert
             Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
         }
 
+        //[Fact (Skip = "fails right now later")] - how to skip a test
         [Fact]
         public void RemoveMemberFromTheTeam()
         {
