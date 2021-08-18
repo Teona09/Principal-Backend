@@ -17,10 +17,10 @@ namespace HelloWorldWeb
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+{
+            var port = Environment.GetEnvironmentVariable("PORT");
+            webBuilder.UseStartup<Startup>().UseUrls("http://*:" + port);
+        });
     }
 }
