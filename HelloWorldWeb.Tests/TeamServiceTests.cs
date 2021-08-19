@@ -1,7 +1,5 @@
 using HelloWorldWeb.Models;
 using HelloWorldWeb.Services;
-using System;
-using System.Linq;
 using Xunit;
 
 namespace HelloWorldWeb.Tests
