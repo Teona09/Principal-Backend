@@ -22,6 +22,11 @@
 
         public DateTime Birthdate { get; set; }
 
+        public static int GetIdCount()
+        {
+            return idCount;
+        }
+
         public int GetAge()
         {
             TimeSpan age;
@@ -31,11 +36,6 @@
             int years = (zeroTime + age).Year - 1;
 
             return years;
-        }
-
-        public static int GetIdCount()
-        {
-            return idCount;
         }
     }
 }
