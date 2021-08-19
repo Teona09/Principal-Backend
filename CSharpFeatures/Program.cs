@@ -22,7 +22,14 @@ namespace CSharpFeatures
             var customerInput = Console.ReadLine();
             Func<string, string, string, string, Coffee> recipe = customerInput == "FlatWhite" ? FlatWhite : Espresso;
             Coffee coffee = MakeCoffee("grains", "milk", "water", "sugar",recipe);
-            Console.WriteLine($"here is your coffee: {coffee}.");
+            if (coffee != null)
+            {
+                Console.WriteLine($"here is your coffee: {coffee}.");
+            }
+            else
+            {
+                Console.WriteLine("the coffee machine is not working properly");
+            }
         }
 
         static Coffee MakeCoffee(string grains,string milk, string water, string sugar,
@@ -36,7 +43,8 @@ namespace CSharpFeatures
             }
             catch
             {
-                throw;
+                Console.WriteLine("sorry your order can not be completed");
+                return null;
             }
             finally
             {
@@ -47,7 +55,8 @@ namespace CSharpFeatures
 
         static Coffee Espresso(string grains, string milk, string water, string sugar)
         {
-            return new Coffee("Espresso");
+            throw new RecipeUnavailableException();
+            //return new Coffee("Espresso");
         }
 
         static Coffee FlatWhite(string grains, string milk, string water, string sugar)
