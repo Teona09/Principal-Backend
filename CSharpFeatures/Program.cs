@@ -8,7 +8,7 @@ namespace CSharpFeatures
     {
         static void Main(string[] args)
         {
-            /*TeamMember teamMember = new TeamMember() { Name = "Member1" };
+            /* TeamMember teamMember = new TeamMember() { Name = "Member1" };
             string jsonString = JsonSerializer.Serialize(teamMember);
             Console.WriteLine(jsonString);
             File.WriteAllText("TeamMember.json", jsonString);
@@ -41,9 +41,14 @@ namespace CSharpFeatures
                 var coffee = recipe(grains, milk, water, sugar);
                 return coffee;
             }
-            catch
+            catch(RecipeUnavailableException ex)
             {
-                Console.WriteLine("sorry your order can not be completed");
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Something went wrong, see exception details: {ex.Message}");
                 return null;
             }
             finally
@@ -55,7 +60,7 @@ namespace CSharpFeatures
 
         static Coffee Espresso(string grains, string milk, string water, string sugar)
         {
-            throw new RecipeUnavailableException();
+            throw new ApplicationException();
             //return new Coffee("Espresso");
         }
 
