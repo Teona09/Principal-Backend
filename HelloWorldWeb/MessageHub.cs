@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace HelloWorldWeb
 {
-    internal class MessageHub : Hub
+    public class MessageHub : Hub
     {
         public async Task SendMessage(string user, string message)
         {

@@ -1,5 +1,20 @@
 ﻿$(document).ready(function () {
 
+    var connection = new signalR.HubConnectionBuilder().withUrl("/messagehub").build();
+
+    connection.on("NewTeamMemberAdded", function (member, memberId) {
+        console.log(`new Team Member Added: ${JSON.stringify(member, null, 2)} ${memberId}`)
+        createNewComer(member);
+    });
+
+
+
+    connection.start().then(function () {
+        console.log('Connection Started')
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
     $("#createButton").click(function () {
         var newcomerName = $("#nameField").val();
         var length = $("#teamMembers").children().length;
@@ -92,3 +107,16 @@ function deleteMember(index) {
         }
     });
 }());
+
+function createNewComer(member) {
+    // Remember string interpolation
+    $("#teamList").append(
+        `<li class="member" member-id="${member.id}">
+        <span class="memberName">${member.name}</span>
+        <span class="delete fa fa-remove" onclick="deleteMember("${member.id}")"></span>
+        <span class="edit fa fa-pencil"> </span>
+        </li>`);
+    }
+//$("#clear").click(function () {
+//    $("#newcomer").val("");
+//})

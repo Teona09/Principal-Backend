@@ -5,14 +5,18 @@
     using System.Linq;
     using System.Threading.Tasks;
     using HelloWorldWeb.Models;
+    using Microsoft.AspNetCore.SignalR;
 
     public class TeamService : ITeamService
     {
         private readonly TeamInfo teamInfo;
         private ITimeService timeService;
+        private readonly IHubContext<MessageHub> messageHub;
 
-        public TeamService()
+        public TeamService(IHubContext<MessageHub> messageHubContext)
         {
+            this.messageHub = messageHubContext;
+
             this.teamInfo = new TeamInfo
             {
                 Name = "Team 3",
@@ -24,6 +28,7 @@
             AddTeamMember("Leon");
             AddTeamMember("George");
             AddTeamMember("Dragos");
+
         }
 
         public TeamInfo GetTeamInfo()
@@ -48,6 +53,7 @@
         {
             TeamMember member = new TeamMember(name, timeService);
             this.teamInfo.TeamMembers.Add(member);
+            messageHub.Clients.All.SendAsync("NewTeamMemberAdded", member, member.Id);
             return member.Id;
         }
 

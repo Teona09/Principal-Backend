@@ -4,6 +4,7 @@
 
 @section scripts{
     <script type="text/javascript" src="~/js/Index.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
 }
 
 @section AdditionalStyles{
@@ -45,15 +46,14 @@
             var member = Model.TeamMembers[i];
 
 <li class="member" member-id="@member.Id">
-    <span class="memberName" >
+    <span class="memberName">
         @member.Name
     </span>
     <span class="delete fa fa-remove" onclick="deleteMember(@member.Id)">
     </span>
     <span class="edit fa fa-pencil">
     </span>
-</li>
-}
+</li>}
     </ul>
     <input type="text" id="nameField" title="e.g Claudia" />
     <button class="btn btn-primary" id="createButton" disabled=true title="Create">Create</button>

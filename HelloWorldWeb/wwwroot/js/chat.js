@@ -11,7 +11,6 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/messagehub").build
 document.getElementById("sendButton").disabled = true;
 
 
-
 connection.on("ReceiveMessage", function (user, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var encodedMsg = user + " says " + msg;
