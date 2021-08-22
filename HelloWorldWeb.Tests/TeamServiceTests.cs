@@ -1,5 +1,7 @@
 using HelloWorldWeb.Models;
 using HelloWorldWeb.Services;
+using Microsoft.AspNetCore.SignalR;
+using Moq;
 using System;
 using System.Linq;
 using Xunit;
@@ -13,7 +15,9 @@ namespace HelloWorldWeb.Tests
         public void AddTeamMemberToTheTeam()
         {
             //Assume
-            ITeamService teamService = new TeamService();
+            Mock<IHubContext<MessageHub>> mockHub = new Mock<IHubContext<MessageHub>>();
+            Mock<IHubClients> mockClients = new Mock<IHubClients>();
+            ITeamService teamService = new TeamService(mockHub.Object);
 
             //Act
             int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
@@ -27,7 +31,9 @@ namespace HelloWorldWeb.Tests
         public void RemoveMemberFromTheTeam()
         {
             // Assume
-            ITeamService teamServiceForRemove = new TeamService();
+            var mockHub = new Mock<IHubContext<MessageHub>>();
+            var mockClients = new Mock<IHubClients>();
+            ITeamService teamServiceForRemove = new TeamService(mockHub.Object);
             int initialCount = teamServiceForRemove.GetTeamInfo().TeamMembers.Count;
             TeamMember firstMember = teamServiceForRemove.GetTeamInfo().TeamMembers[0];
 
@@ -42,7 +48,9 @@ namespace HelloWorldWeb.Tests
         public void UpdateTeamMember()
         {
             //Assume
-            TeamService teamService = new TeamService();
+            var mockHub = new Mock<IHubContext<MessageHub>>();
+            var mockClients = new Mock<IHubClients>();
+            TeamService teamService = new TeamService(mockHub.Object);
             TeamMember firstMember = teamService.GetTeamInfo().TeamMembers[0];
             int currentId = firstMember.Id;
 
@@ -57,7 +65,9 @@ namespace HelloWorldWeb.Tests
         public void CheckIdProblem()
         {
             //Assume
-            ITeamService teamService = new TeamService();
+            var mockHub = new Mock<IHubContext<MessageHub>>();
+            var mockClients = new Mock<IHubClients>();
+            ITeamService teamService = new TeamService(mockHub.Object);
             var memberToBeDeleted = teamService.GetTeamInfo().TeamMembers[teamService.GetTeamInfo().TeamMembers.Count - 2];
             var newMemberName = "Boris";
             //Act
