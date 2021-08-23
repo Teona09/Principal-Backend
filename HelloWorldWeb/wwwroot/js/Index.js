@@ -1,13 +1,17 @@
 ﻿$(document).ready(function () {
 
+    setDelete();
+    setEdit();
+
     var connection = new signalR.HubConnectionBuilder().withUrl("/messagehub").build();
 
     connection.on("NewTeamMemberAdded", function (member, memberId) {
-        console.log(`new Team Member Added: ${JSON.stringify(member, null, 2)} ${memberId}`)
-        createNewComer(member);
+        createNewComer(member, memberId);
     });
 
-
+    connection.on("TeamMemberDeleted", function (memberId) {
+        removeMember(memberId);
+    })
 
     connection.start().then(function () {
         console.log('Connection Started')
@@ -69,11 +73,39 @@
         $('#editClassmate').attr("member-id", id);
         $('#classmateName').val(currentName);
         $('#editClassmate').modal('show');
-        })
+    })
+
 });
 
-function deleteMember(index) {
+function setDelete() {
+    $("#teamList").on("click", ".delete", function () {
+        var id = $(this).parent().attr("member-id");
+        $.ajax({
+            method: "DELETE",
+            url: "/Home/RemoveMember",
+            data: {
+                "id": id
+            },
+            success: (result) => {
+                console.log("delete:" + id);
+            }
+        })
+    }
+    );
+}
 
+function setEdit() {
+    $("#teamList").on("click", ".pencil", function () {
+        var targetMemberTag = $(this).closest('li');
+        var id = targetMemberTag.attr('member-id');
+        var currentName = targetMemberTag.find(".memberName").text();
+        $('#editClassmate').attr("data-member-id", id);
+        $('#classmateName').val(currentName);
+        $('#editClassmate').modal('show');
+    })
+}
+
+/*function deleteMember(index) {
     $.ajax({
         url: "/Home/RemoveMember",
         method: "DELETE",
@@ -84,7 +116,8 @@ function deleteMember(index) {
             location.reload();
         }
     })
-}
+}*/
+
 
 (function () {
     $('#nameField').on('change textInput input', function () {
@@ -97,15 +130,16 @@ function deleteMember(index) {
     });
 }());
 
-function createNewComer(member) {
+function createNewComer (member, memberId) {
     // Remember string interpolation
     $("#teamList").append(
-        `<li class="member" member-id="${member.id}">
+        `<li class="member" member-id="${memberId}">
         <span class="memberName">${member.name}</span>
-        <span class="delete fa fa-remove" onclick="deleteMember("${member.id}")"></span>
+        <span class="delete fa fa-remove"></span>
         <span class="edit fa fa-pencil"> </span>
         </li>`);
-    }
-//$("#clear").click(function () {
-//    $("#newcomer").val("");
-//})
+}
+
+var removeMember = (id) => {
+    $(`li[member-id=${id}]`).remove();
+}

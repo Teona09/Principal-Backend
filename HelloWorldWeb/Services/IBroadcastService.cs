@@ -5,5 +5,6 @@
     public interface IBroadcastService
     {
         void NewTeamMemberAdded(TeamMember member, int id);
+        void TeamMemberDeleted(int id);
     }
 }

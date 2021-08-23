@@ -16,5 +16,10 @@
         {
             messageHub.Clients.All.SendAsync("NewTeamMemberAdded", member, member.Id);
         }
+
+        public void TeamMemberDeleted(int id)
+        {
+            messageHub.Clients.All.SendAsync("TeamMemberDeleted", id);
+        }
     }
 }
