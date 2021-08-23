@@ -5,10 +5,7 @@
 namespace HelloWorldWeb.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Linq;
-    using System.Threading.Tasks;
     using HelloWorldWeb.Models;
     using HelloWorldWeb.Services;
     using Microsoft.AspNetCore.Mvc;

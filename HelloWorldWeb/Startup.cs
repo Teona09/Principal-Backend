@@ -1,9 +1,7 @@
 namespace HelloWorldWeb
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Reflection;
     using HelloWorldWeb.Controllers;
     using HelloWorldWeb.Services;

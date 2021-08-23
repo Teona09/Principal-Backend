@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using HelloWorldWeb.Models;
-    using Microsoft.AspNetCore.SignalR;
 
     public class TeamService : ITeamService
     {

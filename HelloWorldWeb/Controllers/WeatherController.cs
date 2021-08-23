@@ -4,7 +4,6 @@ namespace HelloWorldWebApp.Controllers
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
     using HelloWorldWeb.Models;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json.Linq;
