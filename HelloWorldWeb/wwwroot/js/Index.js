@@ -25,17 +25,6 @@
                 "name": newcomerName
             },
             success: (result) => {
-                console.log(result);
-                $("#teamList").append(
-                    `<li>
-                <span class="memberName" member-id=${result}>
-                        ${newcomerName}
-                    </span >
-                <span class="delete fa fa-remove" onclick="deleteMember(${result})">
-                    </span>
-                <span class="edit fa fa-pencil">
-                    </span>
-                </li>`);
                 $("#nameField").val("");
                 document.getElementById("createButton").disabled = true;
             },
