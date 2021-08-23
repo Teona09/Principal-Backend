@@ -13,6 +13,10 @@
         removeMember(memberId);
     })
 
+    connection.on("TeamMemberEdited", function (id, name) {
+        editMember(id, name);
+    })
+
     connection.start().then(function () {
         console.log('Connection Started')
     }).catch(function (err) {
@@ -95,7 +99,7 @@ function setDelete() {
 }
 
 function setEdit() {
-    $("#teamList").on("click", ".pencil", function () {
+    $("#teamList").on("click", ".edit", function () {
         var targetMemberTag = $(this).closest('li');
         var id = targetMemberTag.attr('member-id');
         var currentName = targetMemberTag.find(".memberName").text();
@@ -142,4 +146,8 @@ function createNewComer (member, memberId) {
 
 var removeMember = (id) => {
     $(`li[member-id=${id}]`).remove();
+}
+
+var editMember = (id, name) => {
+    $(`li[member-id=${id}]`).find(".memberName").text(name);
 }

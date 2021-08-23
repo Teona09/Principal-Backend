@@ -21,5 +21,12 @@
         {
             messageHub.Clients.All.SendAsync("TeamMemberDeleted", id);
         }
+
+        public void TeamMemberEdited(int id, string name)
+        {
+            messageHub.Clients.All.SendAsync("TeamMemberEdited", id, name);
+        }
+
+
     }
 }
