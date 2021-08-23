@@ -2,15 +2,12 @@ using HelloWorldWeb.Models;
 using HelloWorldWeb.Services;
 using Microsoft.AspNetCore.SignalR;
 using Moq;
-using System;
-using System.Linq;
 using Xunit;
 
 namespace HelloWorldWeb.Tests
 {
     public class TeamServiceTest
     {
-        private ITimeService timeService;
         [Fact]
         public void AddTeamMemberToTheTeam()
         {
