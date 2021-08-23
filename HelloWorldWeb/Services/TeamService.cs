@@ -7,12 +7,12 @@
     public class TeamService : ITeamService
     {
         private readonly TeamInfo teamInfo;
-        private readonly IHubContext<MessageHub> messageHub;
-        private ITimeService timeService;
+        private readonly ITimeService timeService;
+        private readonly IBroadcastService broadcastService;
 
-        public TeamService(IHubContext<MessageHub> messageHubContext)
+        public TeamService(IBroadcastService broadcastService)
         {
-            this.messageHub = messageHubContext;
+            this.broadcastService = broadcastService;
             this.teamInfo = new TeamInfo
             {
                 Name = "Team 3",
@@ -48,11 +48,7 @@
         {
             TeamMember member = new TeamMember(name, timeService);
             this.teamInfo.TeamMembers.Add(member);
-            if (messageHub.Clients != null) // to be removed after fixing the tests
-            {
-                messageHub.Clients.All.SendAsync("NewTeamMemberAdded", member, member.Id);
-            }
-
+            broadcastService.NewTeamMemberAdded(member, member.Id);
             return member.Id;
         }
 

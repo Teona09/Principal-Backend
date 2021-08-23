@@ -41,6 +41,7 @@ namespace HelloWorldWeb
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
             });
             services.AddSignalR();
+            services.AddSingleton<IBroadcastService, BroadcastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
