@@ -48,11 +48,7 @@
         {
             TeamMember member = new TeamMember(name, timeService);
             this.teamInfo.TeamMembers.Add(member);
-            if (messageHub.Clients != null) // to be removed after fixing the tests
-            {
-                messageHub.Clients.All.SendAsync("NewTeamMemberAdded", member, member.Id);
-            }
-
+            messageHub.Clients.All.SendAsync("NewTeamMemberAdded", member, member.Id);
             return member.Id;
         }
 
