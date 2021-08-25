@@ -6,8 +6,6 @@
     {
         int AddTeamMember(TeamMember member);
 
-        int AddTeamMember(string name);
-
         TeamInfo GetTeamInfo();
 
         TeamMember GetTeamMemberById(int id);

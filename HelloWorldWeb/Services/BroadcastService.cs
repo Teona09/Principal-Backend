@@ -26,5 +26,7 @@
         {
             messageHub.Clients.All.SendAsync("TeamMemberEdited", id, name);
         }
+
+
     }
 }

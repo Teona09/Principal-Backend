@@ -1,8 +1,8 @@
-﻿namespace HelloWorldWeb
-{
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
 
+namespace HelloWorldWeb
+{
     public class MessageHub : Hub
     {
         public async Task SendMessage(string user, string message)

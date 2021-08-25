@@ -62,7 +62,6 @@
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
             return View(skill);
         }
 
@@ -79,7 +78,6 @@
             {
                 return NotFound();
             }
-
             return View(skill);
         }
 
@@ -113,10 +111,8 @@
                         throw;
                     }
                 }
-
                 return RedirectToAction(nameof(Index));
             }
-
             return View(skill);
         }
 

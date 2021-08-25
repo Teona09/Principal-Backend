@@ -1,13 +1,12 @@
 ﻿namespace HelloWorldWeb.Services
 {
     using System.Collections.Generic;
-    using System.Linq;
     using HelloWorldWeb.Models;
 
     public class TeamService : ITeamService
     {
         private readonly TeamInfo teamInfo;
-        private readonly ITimeService timeService = null;
+        private readonly ITimeService timeService;
         private readonly IBroadcastService broadcastService;
 
         public TeamService(IBroadcastService broadcastService)
@@ -48,8 +47,7 @@
         {
             TeamMember member = new TeamMember(name, timeService);
             this.teamInfo.TeamMembers.Add(member);
-
-            broadcastService.NewTeamMemberAdded(member, member.Id); // kept for testing Mock Broadcast
+            broadcastService.NewTeamMemberAdded(member, member.Id);
             return member.Id;
         }
 
@@ -57,22 +55,22 @@
         {
             var member = GetTeamMemberById(id);
             this.teamInfo.TeamMembers.Remove(member);
-
-            // this.broadcastService.TeamMemberDeleted(id);
+            this.broadcastService.TeamMemberDeleted(id);
         }
 
         public void UpdateMemberName(int memberId, string name)
         {
             int index = teamInfo.TeamMembers.FindIndex(element => element.Id == memberId);
             teamInfo.TeamMembers[index].Name = name;
-
-            // this.broadcastService.TeamMemberEdited(memberId, name);
+            this.broadcastService.TeamMemberEdited(memberId, name);
         }
 
         public int AddTeamMember(TeamMember member)
         {
+            int id = teamInfo.TeamMembers.Max(_ => _.Id) + 1;
+            member.Id = id;
             teamInfo.TeamMembers.Add(member);
-            return member.Id;
+            return id;
         }
     }
 }

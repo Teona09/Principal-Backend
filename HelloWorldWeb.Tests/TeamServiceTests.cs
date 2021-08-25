@@ -1,7 +1,6 @@
 using HelloWorldWeb.Models;
 using HelloWorldWeb.Services;
 using Moq;
-using System.Collections.Generic;
 using Xunit;
 
 namespace HelloWorldWeb.Tests
@@ -25,10 +24,9 @@ namespace HelloWorldWeb.Tests
 
             //Assert
             Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
-            List<TeamMember> newList= teamService.GetTeamInfo().TeamMembers;
             broadcastServiceMock.Verify(_ => _.NewTeamMemberAdded(It.IsAny<TeamMember>(), lastMember.Id), Times.Once());
             // other version: 
-            //broadcastServiceMock.Verify(_ => _.NewTeamMemberAdded(lastMember, lastMember.Id), Times.Once());
+            // broadcastServiceMock.Verify(_ => _.NewTeamMemberAdded(lastMember, lastMember.Id), Times.Once());
         }
 
         //[Fact (Skip = "fails right now later.")] - how to skip a test

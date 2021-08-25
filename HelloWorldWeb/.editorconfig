@@ -8,9 +8,3 @@ dotnet_analyzer_diagnostic.category-StyleCop.CSharp.ReadabilityRules.severity = 
 
 # CS1591: Missing XML comment for publicly visible type or member
 dotnet_diagnostic.CS1591.severity = suggestion
-
-# IDE0065: Misplaced using directive
-csharp_using_directive_placement = inside_namespace
-
-# SA1309: Field names should not begin with underscore
-dotnet_diagnostic.SA1309.severity = silent
