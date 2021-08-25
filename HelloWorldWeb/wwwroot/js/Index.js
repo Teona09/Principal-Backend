@@ -73,7 +73,7 @@
     $("#teamList").on("click", ".edit", function () {
         var targetMemberTag = $(this).closest('li');
         var id = targetMemberTag.attr('member-id');
-        var currentName = targetMemberTag.find(".memberName").text();
+        var currentName = targetMemberTag.find(".memberName").text().trim();
         $('#editClassmate').attr("member-id", id);
         $('#classmateName').val(currentName);
         $('#editClassmate').modal('show');
@@ -108,20 +108,6 @@ function setEdit() {
         $('#editClassmate').modal('show');
     })
 }
-
-/*function deleteMember(index) {
-    $.ajax({
-        url: "/Home/RemoveMember",
-        method: "DELETE",
-        data: {
-            memberIndex: index
-        },
-        success: function (result) {
-            location.reload();
-        }
-    })
-}*/
-
 
 (function () {
     $('#nameField').on('change textInput input', function () {
