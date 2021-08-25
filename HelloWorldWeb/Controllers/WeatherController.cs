@@ -23,6 +23,10 @@ namespace HelloWorldWebApp.Controllers
         private readonly string latitude = "46.7700";
         private readonly string apiKey = "c969b66bb3c8e3fe32d4485a1623f42c";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherController"/> class.
+        /// </summary>
+        /// <param name="conf"> IWeatherConfiguration parameter.</param>
         public WeatherController(IWeatherControllerSettings conf)
         {
             longitude = conf.Longitude;
@@ -30,7 +34,10 @@ namespace HelloWorldWebApp.Controllers
             apiKey = conf.ApiKey;
         }
 
-        // GET: api/<WeatherController>
+        /// <summary>
+        /// Get endpoint that returns a Collection of DailyWeatherRecord.
+        /// </summary>
+        /// <returns>IEnumerable of DailyWeatherRecord.</returns>
         [HttpGet]
         public IEnumerable<DailyWeatherRecord> Get()
         {

@@ -4,6 +4,136 @@
         <name>HelloWorldWeb</name>
     </assembly>
     <members>
+        <member name="T:HelloWorldWeb.Controllers.HomeController">
+            <summary>
+            Home controller.
+            </summary>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.#ctor(Microsoft.Extensions.Logging.ILogger{HelloWorldWeb.Controllers.HomeController},HelloWorldWeb.Services.ITeamService,HelloWorldWeb.Services.ITimeService,HelloWorldWeb.Services.IBroadcastService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelloWorldWeb.Controllers.HomeController"/> class.
+            </summary>
+            <param name="logger"> Necesary parameter for the superclass.</param>
+            <param name="teamService"> Team service parameter.</param>
+            <param name="timeService"> Time service parameter.</param>
+            <param name="broadcastService"> Boardcast service parameter.</param>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.GetCount">
+            <summary>
+            Get endpoint which returns the number of the team members.
+            </summary>
+            <returns> the number of team members.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.AddTeamMember(System.String)">
+            <summary>
+            Post endpoint to add a new team member.
+            </summary>
+            <param name="name"> Name of the new team member.</param>
+            <returns> New team member id.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.RemoveMember(System.Int32)">
+            <summary>
+            Deletes a member.
+            </summary>
+            <param name="id"> id of the team member that has to be deleted.</param>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.UpdateMemberName(System.Int32,System.String)">
+            <summary>
+            Post endpoints to update a team member.
+            </summary>
+            <param name="memberId"> id of the team member to be updated.</param>
+            <param name="name"> new name for the team member.</param>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.Index">
+            <summary>
+            Loads the Index page.
+            </summary>
+            <returns> Returns an implementation of IActionResult that has the teamInfo properties.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.Privacy">
+            <summary>
+            Loads the privacy page.
+            </summary>
+            <returns>Returns an implementation of IActionResult.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.Error">
+            <summary>
+            Loads an error page.
+            </summary>
+            <returns>Returns an implementation of IActionResult which contains error infomations.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.HomeController.Chat">
+            <summary>
+            Creates the Chat view.
+            </summary>
+            <returns>Returns the chat view.</returns>
+        </member>
+        <member name="T:HelloWorldWeb.Controllers.SkillsController">
+            <summary>
+            Skill Controller.
+            </summary>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.#ctor(HelloWorldWeb.Data.ApplicationDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelloWorldWeb.Controllers.SkillsController"/> class.
+            </summary>
+            <param name="context"> ApplicationContext parameter</param>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Index">
+            <summary>
+            Loads the index page.
+            </summary>
+            <returns> Returns an implementation of IActionResult that contains a list of Skills</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Returns skill by id.
+            </summary>
+            <param name="id"> id of the searched skill.</param>
+            <returns>Returns an implementation of IActionResult that contains the searched Skill</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Create">
+            <summary>
+            Get endpoint for create skill.
+            </summary>
+            <returns>Returns an implementation of IActionResult.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Create(HelloWorldWeb.Models.Skill)">
+            <summary>
+            Post endpoint to create a new skill.
+            </summary>
+            <param name="skill"> Skill object to be added to database.</param>
+            <returns>Returns an implementation of IActionResult that contains the added Skill.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Get endpoint for editing skill.
+            </summary>
+            <param name="id">Id of the skill to be edited</param>
+            <returns>Returns an implementation of IActionResult that contains skill to be edited.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Edit(System.Int32,HelloWorldWeb.Models.Skill)">
+            <summary>
+            Post endpoint to edit a skill.
+            </summary>
+            <param name="id"> Id of the skill to be edited.</param>
+            <param name="skill"> Modified skill.</param>
+            <returns>Returns an implementation of IActionResult that contains the edited Skill.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Get endpoint to delete a skill.
+            </summary>
+            <param name="id"> id of the skill to be deleted.</param>
+            <returns>Returns an implementation of IActionResult that contains skill to be deleted.</returns>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.SkillsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Get endpoint to delete a skill.
+            </summary>
+            <param name="id">id of the skill to be deleted.</param>
+            <returns>Returns an implementation of IActionResult that contains the modified Skill list.</returns>
+        </member>
         <member name="T:HelloWorldWebApp.Controllers.WeatherController">
             <summary>
             fetch data from weather API.
@@ -11,6 +141,18 @@
             Weather API
             </see>
             </summary>
+        </member>
+        <member name="M:HelloWorldWebApp.Controllers.WeatherController.#ctor(HelloWorldWebApp.Controllers.IWeatherControllerSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelloWorldWebApp.Controllers.WeatherController"/> class.
+            </summary>
+            <param name="conf"> IWeatherConfiguration parameter.</param>
+        </member>
+        <member name="M:HelloWorldWebApp.Controllers.WeatherController.Get">
+            <summary>
+            Get endpoint that returns a Collection of DailyWeatherRecord.
+            </summary>
+            <returns>IEnumerable of DailyWeatherRecord.</returns>
         </member>
         <member name="M:HelloWorldWebApp.Controllers.WeatherController.Get(System.Int32)">
             <summary>
