@@ -14,8 +14,8 @@
 
         public string Longitude { get; set; }
 
-        public string Latitude { get; set ; }
+        public string Latitude { get; set; }
 
-        public string ApiKey { get ; set ; }
+        public string ApiKey { get; set; }
     }
 }

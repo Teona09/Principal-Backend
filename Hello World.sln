@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldWeb.Tests", "HelloWorldWeb.Tests\HelloWorldWeb.Tests.csproj", "{C69745D9-2A7A-4FEB-9A29-058B4E6E1090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,14 +30,10 @@ Global
 		{5E041A65-BFE3-4C8A-8C1C-7F3A22F973DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E041A65-BFE3-4C8A-8C1C-7F3A22F973DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E041A65-BFE3-4C8A-8C1C-7F3A22F973DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC97C154-8329-46EB-8FB0-216444605C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC97C154-8329-46EB-8FB0-216444605C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC97C154-8329-46EB-8FB0-216444605C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC97C154-8329-46EB-8FB0-216444605C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69745D9-2A7A-4FEB-9A29-058B4E6E1090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69745D9-2A7A-4FEB-9A29-058B4E6E1090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69745D9-2A7A-4FEB-9A29-058B4E6E1090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69745D9-2A7A-4FEB-9A29-058B4E6E1090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
