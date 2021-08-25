@@ -35,7 +35,7 @@ namespace HelloWorldWeb.Controllers
         [HttpPost]
         public int AddTeamMember(string name)
         {
-            //TeamMember member = new TeamMember(name, timeService);
+            // TeamMember member = new TeamMember(name, timeService);
             TeamMember member = new TeamMember() { Name = name };
             int newMemberId = this.teamService.AddTeamMember(member);
             broadcastService.NewTeamMemberAdded(member, member.Id);

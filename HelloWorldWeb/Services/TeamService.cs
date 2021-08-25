@@ -55,6 +55,7 @@
         {
             var member = GetTeamMemberById(id);
             this.teamInfo.TeamMembers.Remove(member);
+
             // this.broadcastService.TeamMemberDeleted(id);
         }
 
@@ -62,6 +63,7 @@
         {
             int index = teamInfo.TeamMembers.FindIndex(element => element.Id == memberId);
             teamInfo.TeamMembers[index].Name = name;
+
             // this.broadcastService.TeamMemberEdited(memberId, name);
         }
 

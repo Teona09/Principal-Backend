@@ -36,6 +36,7 @@ namespace HelloWorldWeb
         public void ConfigureServices(IServiceCollection services)
         {
             string databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
             // string databaseUrl = Configuration.GetConnectionString("HerokuPostgres");
             string connectionString = "";
             if (databaseUrl != null)
