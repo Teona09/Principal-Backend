@@ -29,7 +29,7 @@ namespace HelloWorldWeb
         {
             var databaseUri = new Uri(herokuConnectionString);
             string[] databaseUriUserInfo = databaseUri.UserInfo.Split(":");
-            return $"Host={databaseUri.Host};Port={databaseUri.Port};Database={databaseUri.LocalPath.Substring(1)};User Id={databaseUriUserInfo[0]};Password={databaseUriUserInfo[1]};Pooling=true;SSL Mode=Require;TrustServerCertificate=True;";
+            return $"Host={databaseUri.Host};Port={databaseUri.Port};Database={databaseUri.LocalPath[1..]};User Id={databaseUriUserInfo[0]};Password={databaseUriUserInfo[1]};Pooling=true;SSL Mode=Require;TrustServerCertificate=True;";
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
