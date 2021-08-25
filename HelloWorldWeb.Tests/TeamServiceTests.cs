@@ -29,6 +29,7 @@ namespace HelloWorldWeb.Tests
             // broadcastServiceMock.Verify(_ => _.NewTeamMemberAdded(lastMember, lastMember.Id), Times.Once());
         }
 
+        //[Fact (Skip = "fails right now later.")] - how to skip a test
         [Fact]
         public void RemoveMemberFromTheTeam()
         {

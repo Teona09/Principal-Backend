@@ -20,14 +20,40 @@ namespace HelloWorldWeb
             this.Configuration = configuration;
         }
 
+        public static string ConvertHerokuStringToAspnetString(string herokuConnectionString)
+        {
+            var databaseUri = new Uri(herokuConnectionString);
+            string[] databaseUriUserInfo = databaseUri.UserInfo.Split(":");
+            return $"Host={databaseUri.Host};Port={databaseUri.Port};Database={databaseUri.LocalPath.Substring(1)};User Id={databaseUriUserInfo[0]};Password={databaseUriUserInfo[1]};Pooling=true;SSL Mode=Require;TrustServerCertificate=True;";
+        }
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            // string databaseUrl = Configuration.GetConnectionString("HerokuPostgres");
+            string connectionString = "";
+            if (databaseUrl != null)
+            {
+                connectionString = ConvertHerokuStringToAspnetString(databaseUrl);
+            }
+            else
+            {
+                connectionString = Configuration.GetConnectionString("DefaultConnection");
+            }
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(connectionString));
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddSingleton<IWeatherControllerSettings, WeatherControllerSettings>();
-            services.AddSingleton<ITeamService, TeamService>();
+            services.AddScoped<ITeamService, DbTeamService>();
             services.AddSingleton<ITimeService, TimeService>();
             services.AddSwaggerGen(c =>
             {
@@ -51,6 +77,7 @@ namespace HelloWorldWeb
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
 
                 app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
@@ -65,6 +92,7 @@ namespace HelloWorldWeb
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -14,10 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldWeb.Tests", "HelloWorldWeb.Tests\HelloWorldWeb.Tests.csproj", "{C5E05952-4FB7-4EEC-B1D6-67B2B6F49C1D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpFeatures", "CSharpFeatures\CSharpFeatures.csproj", "{EC97C154-8329-46EB-8FB0-216444605C8F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

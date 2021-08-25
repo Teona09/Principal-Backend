@@ -64,5 +64,13 @@
             teamInfo.TeamMembers[index].Name = name;
             this.broadcastService.TeamMemberEdited(memberId, name);
         }
+
+        public int AddTeamMember(TeamMember member)
+        {
+            int id = teamInfo.TeamMembers.Max(_ => _.Id) + 1;
+            member.Id = id;
+            teamInfo.TeamMembers.Add(member);
+            return id;
+        }
     }
 }
