@@ -16,6 +16,7 @@
 
         public TeamMember(string name, ITimeService timeService)
         {
+            // kept for testing
             this.Name = name;
             this.Id = idCount;
             idCount++;

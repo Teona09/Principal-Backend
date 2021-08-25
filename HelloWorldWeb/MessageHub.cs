@@ -1,7 +1,7 @@
 ﻿namespace HelloWorldWeb
 {
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.SignalR;
+    using System.Threading.Tasks;
 
     public class MessageHub : Hub
     {
