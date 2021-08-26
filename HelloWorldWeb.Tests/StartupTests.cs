@@ -1,7 +1,6 @@
-﻿using Xunit;
-
-namespace HelloWorldWeb.Tests
+﻿namespace HelloWorldWeb.Tests
 {
+    using Xunit;
     public class StartupTests
     {
         [Fact]

@@ -1,15 +1,10 @@
-﻿using HelloWorldWeb.Models;
-using HelloWorldWeb.Services;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace HelloWorldWeb.Tests
+﻿namespace HelloWorldWeb.Tests
 {
+    using HelloWorldWeb.Models;
+    using HelloWorldWeb.Services;
+    using Moq;
+    using System;
+    using Xunit;
     public class TeamMemberTests
     {
         private Mock<ITimeService> timeMock;

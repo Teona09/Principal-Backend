@@ -1,11 +1,11 @@
-using HelloWorldWeb.Models;
-using HelloWorldWeb.Services;
-using Moq;
-using System.Collections.Generic;
-using Xunit;
-
 namespace HelloWorldWeb.Tests
 {
+    using HelloWorldWeb.Models;
+    using HelloWorldWeb.Services;
+    using Moq;
+    using System.Collections.Generic;
+    using Xunit;
+
     public class TeamServiceTest
     {
         private IBroadcastService broadcastService;

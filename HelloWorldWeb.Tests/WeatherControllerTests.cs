@@ -1,17 +1,13 @@
-﻿using HelloWorldWeb.Models;
-using HelloWorldWebApp.Controllers;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace HelloWorldWeb.Tests
+﻿namespace HelloWorldWeb.Tests
 {
+    using HelloWorldWeb.Models;
+    using HelloWorldWebApp.Controllers;
+    using Moq;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using Xunit;
+
     public class WeatherControllerTests
     {
         [Fact]
