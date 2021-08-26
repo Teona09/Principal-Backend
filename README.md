@@ -1,7 +1,9 @@
 # HelloWorldApp
-[![.NET](https://github.com/Teona09/Principal-Backend/actions/workflows/dotnet.yml)
+[![.NET](https://github.com/Teona09/Principal-Backend/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Teona09/Principal-Backend/actions/workflows/dotnet.yml)
 ## How to run/deploy
-##Locally (using Docker)
+
+###Locally (using Docker)
+
 1.Build container image
 ```
 docker build -t teonahelloworldapp
@@ -12,7 +14,8 @@ docker run -d -p {external_port}:80 --name teonahelloworldapp_container teonahel
 ```
 Replace `external_port` with the desired port on the host machine. *(E.g. 8081)*
 
-##On Heroku
+###On Heroku
+
 1.Login to heroku
 ```
 heroku login
