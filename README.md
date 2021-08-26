@@ -6,7 +6,7 @@
 
 1.Build container image
 ```
-docker build -t teonahelloworldapp
+docker build -t teonahelloworldapp .
 ```
 2. Create and run docker container
 ```
