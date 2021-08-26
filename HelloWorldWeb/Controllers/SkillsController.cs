@@ -4,12 +4,14 @@
     using System.Threading.Tasks;
     using HelloWorldWeb.Data;
     using HelloWorldWeb.Models;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// Skill Controller.
     /// </summary>
+    [Authorize(Roles ="Administrators")]
     public class SkillsController : Controller
     {
         private readonly ApplicationDbContext _context;
