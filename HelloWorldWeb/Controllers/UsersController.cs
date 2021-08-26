@@ -27,14 +27,14 @@
         {
             var user = await userManager.FindByIdAsync(id);
             await userManager.AddToRoleAsync(user, "Administrators");
-            return View("Index", await userManager.Users.ToListAsync());
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> AssignUsualRole(string id)
         {
             var user = await userManager.FindByIdAsync(id);
             await userManager.RemoveFromRoleAsync(user, "Administrators");
-            return View("Index", await userManager.Users.ToListAsync());
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Users/Details/5
