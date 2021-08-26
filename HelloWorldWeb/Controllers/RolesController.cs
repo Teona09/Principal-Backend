@@ -1,13 +1,12 @@
 ﻿namespace HelloWorldWeb.Controllers
 {
-    using Microsoft.AspNetCore.Http;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class RolesController : Controller
     {
-        RoleManager<IdentityRole> roleManager;
+        private RoleManager<IdentityRole> roleManager;
 
         public RolesController(RoleManager<IdentityRole> roleManager)
         {

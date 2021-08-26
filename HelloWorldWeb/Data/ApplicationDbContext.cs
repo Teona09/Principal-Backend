@@ -1,9 +1,5 @@
 ﻿namespace HelloWorldWeb.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using HelloWorldWeb.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
