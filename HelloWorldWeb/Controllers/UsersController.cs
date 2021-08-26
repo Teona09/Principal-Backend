@@ -1,16 +1,14 @@
 ﻿namespace HelloWorldWeb.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
-    using HelloWorldWeb.Models;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
     public class UsersController : Controller
     {
-        private UserManager<IdentityUser> userManager;
+        private readonly UserManager<IdentityUser> userManager;
 
         public UsersController(UserManager<IdentityUser> userManager)
         {
@@ -20,9 +18,11 @@
         // GET: Users
         public async Task<IActionResult> Index()
         {
+            ViewData["Administrators"] = await userManager.GetUsersInRoleAsync("Administrators");
             return View(await userManager.Users.ToListAsync());
         }
 
+        [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> AssignAdminRole(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -30,6 +30,7 @@
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> AssignUsualRole(string id)
         {
             var user = await userManager.FindByIdAsync(id);
