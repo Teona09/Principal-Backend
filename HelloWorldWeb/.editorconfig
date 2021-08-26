@@ -17,3 +17,6 @@ dotnet_diagnostic.SA1309.severity = silent
 
 # SA1310: Field names should not contain underscore
 dotnet_diagnostic.SA1310.severity = silent
+
+# IDE0090: Use 'new(...)'
+dotnet_diagnostic.IDE0090.severity = none
