@@ -6,22 +6,37 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// Users Controller
+    /// </summary>
     public class UsersController : Controller
     {
         private readonly UserManager<IdentityUser> userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsersController"/> class.
+        /// </summary>
+        /// <param name="userManager">UserManager &lt; IdentityRole &gt; parameter.</param>
         public UsersController(UserManager<IdentityUser> userManager)
         {
             this.userManager = userManager;
         }
 
-        // GET: Users
+        /// <summary>
+        /// Loads the index page.
+        /// </summary>
+        /// <returns>Returns an implementation of IActionResult which contains the users list.</returns>
         public async Task<IActionResult> Index()
         {
             ViewData["Administrators"] = await userManager.GetUsersInRoleAsync("Administrators");
             return View(await userManager.Users.ToListAsync());
         }
 
+        /// <summary>
+        /// Change a user role to admin.
+        /// </summary>
+        /// <param name="id">id of the user to change to admin.</param>
+        /// <returns>Returns an implementation of IActionResult which will redirect to Index.</returns>
         [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> AssignAdminRole(string id)
         {
@@ -30,6 +45,11 @@
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Change a user role to usual user.
+        /// </summary>
+        /// <param name="id">id of the user to change to usual user.</param>
+        /// <returns>Returns an implementation of IActionResult which will redirect to Index.</returns>
         [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> AssignUsualRole(string id)
         {
@@ -38,8 +58,9 @@
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Users/Details/5
-        /*public async Task<IActionResult> Details(int? id)
+        /*
+         * // GET: Users/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

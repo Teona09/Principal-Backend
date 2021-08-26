@@ -18,6 +18,10 @@ namespace HelloWorldWeb
 
     public class Startup
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
@@ -112,7 +116,7 @@ namespace HelloWorldWeb
             });
         }
 
-        private async void AssignRoleProgramaticaly(IServiceProvider services)
+        private static async void AssignRoleProgramaticaly(IServiceProvider services)
         {
             var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
             var user = await userManager.FindByNameAsync("teona@principal.com");

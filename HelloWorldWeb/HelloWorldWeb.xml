@@ -68,6 +68,23 @@
             </summary>
             <returns>Returns the chat view.</returns>
         </member>
+        <member name="T:HelloWorldWeb.Controllers.RolesController">
+            <summary>
+            Roles Controller.
+            </summary>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.RolesController.#ctor(Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelloWorldWeb.Controllers.RolesController"/> class.
+            </summary>
+            <param name="roleManager">RoleManager &lt; IdentityRole &gt; parameter.</param>
+        </member>
+        <member name="M:HelloWorldWeb.Controllers.RolesController.Index">
+            <summary>
+            Loads the Index page.
+            </summary>
+            <returns>Returns an implementation of IActionResult that has a Collection of roles.</returns>
+        </member>
         <member name="T:HelloWorldWeb.Controllers.SkillsController">
             <summary>
             Skill Controller.
