@@ -23,6 +23,20 @@
             return View(await userManager.Users.ToListAsync());
         }
 
+        public async Task<IActionResult> AssignAdminRole(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            await userManager.AddToRoleAsync(user, "Administrators");
+            return View("Index", await userManager.Users.ToListAsync());
+        }
+
+        public async Task<IActionResult> AssignUsualRole(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            await userManager.RemoveFromRoleAsync(user, "Administrators");
+            return View("Index", await userManager.Users.ToListAsync());
+        }
+
         // GET: Users/Details/5
         /*public async Task<IActionResult> Details(int? id)
         {
