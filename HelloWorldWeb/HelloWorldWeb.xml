@@ -6,7 +6,7 @@
     <members>
         <member name="T:HelloWorldWeb.Controllers.HomeController">
             <summary>
-            Home controller.
+            Home controller - docmuentation kept as example.
             </summary>
         </member>
         <member name="M:HelloWorldWeb.Controllers.HomeController.#ctor(Microsoft.Extensions.Logging.ILogger{HelloWorldWeb.Controllers.HomeController},HelloWorldWeb.Services.ITeamService,HelloWorldWeb.Services.ITimeService,HelloWorldWeb.Services.IBroadcastService)">
@@ -68,150 +68,17 @@
             </summary>
             <returns>Returns the chat view.</returns>
         </member>
-        <member name="T:HelloWorldWeb.Controllers.RolesController">
-            <summary>
-            Roles Controller.
-            </summary>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.RolesController.#ctor(Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})">
-            <summary>
-            Initializes a new instance of the <see cref="T:HelloWorldWeb.Controllers.RolesController"/> class.
-            </summary>
-            <param name="roleManager">RoleManager &lt; IdentityRole &gt; parameter.</param>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.RolesController.Index">
-            <summary>
-            Loads the Index page.
-            </summary>
-            <returns>Returns an implementation of IActionResult that has a Collection of roles.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.RolesController.Create">
-            <summary>
-            Get endpoint to create a new role.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.RolesController.Create(Microsoft.AspNetCore.Identity.IdentityRole)">
-            <summary>
-            Post endpoint to create a new role.
-            </summary>
-            <param name="role">The role to be created.</param>
-            <returns>Redirect to Index page.</returns>
-        </member>
-        <member name="T:HelloWorldWeb.Controllers.SkillsController">
-            <summary>
-            Skill Controller.
-            </summary>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.#ctor(HelloWorldWeb.Data.ApplicationDbContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:HelloWorldWeb.Controllers.SkillsController"/> class.
-            </summary>
-            <param name="context"> ApplicationContext parameter</param>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Index">
-            <summary>
-            Loads the index page.
-            </summary>
-            <returns> Returns an implementation of IActionResult that contains a list of Skills</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Details(System.Nullable{System.Int32})">
-            <summary>
-            Returns skill by id.
-            </summary>
-            <param name="id"> id of the searched skill.</param>
-            <returns>Returns an implementation of IActionResult that contains the searched Skill</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Create">
-            <summary>
-            Get endpoint for create skill.
-            </summary>
-            <returns>Returns an implementation of IActionResult.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Create(HelloWorldWeb.Models.Skill)">
-            <summary>
-            Post endpoint to create a new skill.
-            </summary>
-            <param name="skill"> Skill object to be added to database.</param>
-            <returns>Returns an implementation of IActionResult that contains the added Skill.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Edit(System.Nullable{System.Int32})">
-            <summary>
-            Get endpoint for editing skill.
-            </summary>
-            <param name="id">Id of the skill to be edited</param>
-            <returns>Returns an implementation of IActionResult that contains skill to be edited.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Edit(System.Int32,HelloWorldWeb.Models.Skill)">
-            <summary>
-            Post endpoint to edit a skill.
-            </summary>
-            <param name="id"> Id of the skill to be edited.</param>
-            <param name="skill"> Modified skill.</param>
-            <returns>Returns an implementation of IActionResult that contains the edited Skill.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.Delete(System.Nullable{System.Int32})">
-            <summary>
-            Get endpoint to delete a skill.
-            </summary>
-            <param name="id"> id of the skill to be deleted.</param>
-            <returns>Returns an implementation of IActionResult that contains skill to be deleted.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.SkillsController.DeleteConfirmed(System.Int32)">
-            <summary>
-            Get endpoint to delete a skill.
-            </summary>
-            <param name="id">id of the skill to be deleted.</param>
-            <returns>Returns an implementation of IActionResult that contains the modified Skill list.</returns>
-        </member>
-        <member name="T:HelloWorldWeb.Controllers.UsersController">
-            <summary>
-            Users Controller
-            </summary>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.UsersController.#ctor(Microsoft.AspNetCore.Identity.UserManager{Microsoft.AspNetCore.Identity.IdentityUser})">
-            <summary>
-            Initializes a new instance of the <see cref="T:HelloWorldWeb.Controllers.UsersController"/> class.
-            </summary>
-            <param name="userManager">UserManager &lt; IdentityRole &gt; parameter.</param>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.UsersController.Index">
-            <summary>
-            Loads the index page.
-            </summary>
-            <returns>Returns an implementation of IActionResult which contains the users list.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.UsersController.AssignAdminRole(System.String)">
-            <summary>
-            Change a user role to admin.
-            </summary>
-            <param name="id">id of the user to change to admin.</param>
-            <returns>Returns an implementation of IActionResult which will redirect to Index.</returns>
-        </member>
-        <member name="M:HelloWorldWeb.Controllers.UsersController.AssignUsualRole(System.String)">
-            <summary>
-            Change a user role to usual user.
-            </summary>
-            <param name="id">id of the user to change to usual user.</param>
-            <returns>Returns an implementation of IActionResult which will redirect to Index.</returns>
-        </member>
         <member name="M:HelloWorldWeb.Data.ApplicationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{HelloWorldWeb.Data.ApplicationDbContext})">
             <summary>
             Initializes a new instance of the <see cref="T:HelloWorldWeb.Data.ApplicationDbContext"/> class.
             </summary>
             <param name="options"></param>
         </member>
-        <member name="M:HelloWorldWeb.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
-            <summary>
-            Initializes a new instance of the <see cref="T:HelloWorldWeb.Startup"/> class.
-            </summary>
-            <param name="configuration"></param>
-        </member>
         <member name="T:HelloWorldWebApp.Controllers.WeatherController">
             <summary>
             fetch data from weather API.
             <see href="https://openweathermap.org/api">
-            Weather API
+            Weather API - kept as a documentation example.
             </see>
             </summary>
         </member>
