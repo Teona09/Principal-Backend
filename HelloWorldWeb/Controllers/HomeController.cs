@@ -13,7 +13,7 @@ namespace HelloWorldWeb.Controllers
     using Microsoft.Extensions.Logging;
 
     /// <summary>
-    /// Home controller.
+    /// Home controller - docmuentation kept as example.
     /// </summary>
     [Authorize]
     public class HomeController : Controller

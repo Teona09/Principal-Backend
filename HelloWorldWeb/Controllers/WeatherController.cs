@@ -12,7 +12,7 @@ namespace HelloWorldWebApp.Controllers
     /// <summary>
     /// fetch data from weather API.
     /// <see href="https://openweathermap.org/api">
-    /// Weather API
+    /// Weather API - kept as a documentation example.
     /// </see>
     /// </summary>
     [Route("api/[controller]")]
