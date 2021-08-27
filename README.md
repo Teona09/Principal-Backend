@@ -1,7 +1,7 @@
 # HelloWorldApp
 [![.NET](https://github.com/Teona09/Principal-Backend/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Teona09/Principal-Backend/actions/workflows/dotnet.yml)
 
-The app can pe found on: [heroku link](http://app-helloworld-teona.herokuapp.com/Identity/Account/Login?ReturnUrl=%2F)
+The app can pe found on: [app-helloworld-teona](http://app-helloworld-teona.herokuapp.com/Identity/Account/Login?ReturnUrl=%2F)
 ## How to run/deploy
 
 ### Locally (using Docker)
