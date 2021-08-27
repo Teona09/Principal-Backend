@@ -21,7 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            @if (User.IsInRole("Administrators"))
+            @if (User.IsInRole("Administrator"))
             {   <th>Change Role</th>}
             else
             {   <th>Role</th>}
@@ -39,23 +39,29 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @if (User.IsInRole("Administrators"))
+                @if (User.IsInRole("Administrator"))
                 {
-
-                    @if (ViewBag.Administrators.Contains(item))
+                @if(User.Identity.Name != item.UserName)
                     {
-                        <a asp-action="AssignUsualRole" asp-route-id="@item.Id">Assign Usual User Role</a>
-
+                @if (ViewBag.Administrator.Contains(item))
+                        {
+                <a asp-action="AssignUsualRole" asp-route-id="@item.Id">Assign Usual User Role</a>
+                        }
+                        else
+                        {
+                <a asp-action="AssignAdminRole" asp-route-id="@item.Id">Assign Administrator Role</a>
+                        }
                     }
                     else
                     {
-                        <a asp-action="AssignAdminRole" asp-route-id="@item.Id">Assign Administrator Role</a>
+                <p> you can't change your own role </p>
                     }
+
                 }
                 else
                 {
-                    @if (ViewBag.Administrators.Contains(item))
-                    {<p> Adminstrators </p> }
+                @if (ViewBag.Administrator.Contains(item))
+                    {<p> Adminstrator </p> }
                     else
                     { <p> Usual User </p>}
                 }
